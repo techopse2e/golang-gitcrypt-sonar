@@ -10,7 +10,7 @@ RUN  echo "${TIME_ZONE}" > /etc/timezone \
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 RUN apt update
-RUN apt-get install -y make g++ libssl-dev openssl git ansible unzip
+RUN apt-get install -y make g++ libssl-dev openssl git ansible unzip groff less python py-pip
 
 RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.20.0
 RUN curl -L https://github.com/AGWA/git-crypt/archive/debian/$VERSION.tar.gz | tar zxv -C /var/tmp \
@@ -22,3 +22,6 @@ RUN curl -L https://github.com/AGWA/git-crypt/archive/debian/$VERSION.tar.gz | t
 RUN curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip \
     && unzip sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip \
     && ln -s $PWD/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin/sonar-scanner /usr/local/bin/
+
+# Add aws cli
+RUN pip install awscli
