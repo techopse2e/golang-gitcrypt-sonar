@@ -10,7 +10,7 @@ RUN  echo "${TIME_ZONE}" > /etc/timezone \
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 RUN apt update
-RUN apt-get install -y make g++ libssl-dev openssl git ansible unzip groff less python py-pip
+RUN apt-get install -y make g++ libssl-dev openssl git ansible unzip python python-pip
 
 RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.20.0
 RUN curl -L https://github.com/AGWA/git-crypt/archive/debian/$VERSION.tar.gz | tar zxv -C /var/tmp \
